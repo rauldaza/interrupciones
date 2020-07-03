@@ -1,0 +1,44 @@
+/*se declara la variable tipo volatile para que el programa
+consulte su valor antes de volver a iniciar el flujo del programa
+luego de una interrupcion*/
+volatile int estado = LOW;
+ 
+void setup() {
+  /*pin 10 en modo de salida de señal, este es el pin que
+  simulara una señal externa que generaria una interrupcion
+  en un pin*/
+  pinMode(10, OUTPUT);
+  /*pin 13 en modo de salida de señal, aqui puede ir conectado
+  cualquier periferico, en este se vera reflejado la accion de
+  la interrupcion, como puede ser encerder un led*/
+  pinMode(13, OUTPUT);
+  /*pin 2 en modo entrada de señal, este es el pin en donde
+  llegara la señal que generara la interrupcion*/
+  pinMode(2, INPUT_PULLUP);
+  /*attachinterrupt es la funcion que genera la interrupcion
+  difitalpintointerrupt indica en que pin se recibira la señal
+  de interrupcion, encender el la funcion que se debe realidar
+  cuando se interrumpa el programa, y CHANGE indica que la
+  interrupcion se debe realizar simepre y cuando haya un cambio
+  de LOW a HIGH o viceversa*/
+  attachInterrupt(digitalPinToInterrupt(2), encender, CHANGE);
+}
+ 
+void loop() {
+  //aqui se genera la señal que que indicara la interrupcion
+  digitalWrite(10, HIGH);
+  delay(150);
+  digitalWrite(10, LOW);
+  delay(150);
+}
+ /*esta funcion sirve para enviar voltaje al pin 13 cuando se
+ genere la interrupcion*/
+void encender() {
+  if(estado==LOW){
+    estado=HIGH;
+  }
+  else{
+    estado=LOW;
+  }
+  digitalWrite(13, estado);
+}
