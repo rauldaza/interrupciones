@@ -1,0 +1,41 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[t1]{fontenc}
+\usepackage[spanish]{babel}
+
+\title{Interrupciones}
+\author{Raul Daza Liñan }
+\date{July 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducción}
+En el mundo de la computación siempre se ha querido ser más eficiente en el uso de los recursos de las computadores, una de las situaciones en la que los especialistas informáticos se habían fijado era en la eficacia del uso de los recursos de los procesadores para acciones o peticiones que necesitaban una respuesta inmediata, una forma de responder a estas acciones/peticiones lo más rápido posible era revisar periódicamente en componente o código que podría generaba esa acción/petición, esta en cualquier momento iba a necesitar esa respuesta. Ese sondeo periódico se llama Polling, este produce inconvenientes pues este es muy ineficaz, porque se está constantemente usando recursos del procesador para una revisar una acción/petición que ni siquiera está en curso constantemente, sino que se está a la espera de esa acción/petición, para dar solución a este problema que afectaba el rendimiento de los procesadores nacieron las interrupciones. Una interrupción en el contexto de microprocesadores es una pausa al flujo usual del código que se está ejecutando para comenzar a realizar una subrutina a modo de respuesta a lo que causo esa interrupción, en vez de revisar regularmente (lo que puede generar demoras dependiendo de la frecuencia con la que se hace la revisión) las interrupciones actúan de manera inmediata. Las interrupciones son útiles para ejecutar un código en respuesta de cierta acción de forma inmediata, lo ideal es que la interrupción sea lo mas corta y eficiente posible para volver a flujo natural del código que se estaba ejecutando.
+\section{Tipos de interrupciones}
+Las interrupciones se pueden clasificar de acuerdo a lo que la genera: el software, el hardware, el propio procesador.
+\subsection{Interruciones por hardware}
+Las interrupciones por hardware son producidas por dispositivos periféricos que produzcan señales de entrada o de salida como lo puede ser un teclado, el disco duro o un ratón. Para generar una interrupción estos dispositivos generan una señal eléctrica para indicarle al procesador la necesidad de interrupción.
+\subsection{Interruciones por software}
+Las interrupciones por software o también conocidas como “llamadas al sistema” son producidas por programas en ejecución, estas interrupciones pueden darse por petición del sistema operativo o una llamada al sistema intensional hecha por el usuario, estas interrupciones son de mayor prioridad que las interrupciones por hardware.
+\subsection{Excepciones}
+Las excepciones son un tipo de interrupciones especiales pues estas son producidas por la propia CPU. Esta se produce cuando hay un desbordamiento o error lógico, un ejemplo de error lógico es la división entre cero, logaritmo de cero o cualquier error aritmético, el desbordamiento es generado por la búsqueda de índices mayores a los existentes o una sobrecarga de información en el stack.
+\section{Inconvenientes de las excepciones}
+Las interrupciones pueden ser muy útiles, pero pueden generar inconvenientes si son largas y necesitan mucho tiempo de procesamiento, supongamos que una maquina carga y desplaza con brazo robótico una pieza, si surge una interrupción prolongada en medio del desplazamiento puede causar la detención del brazo derivando en una posible caída de la pieza.
+
+\begin{thebibliography}{0}
+
+\bibitem{Dpto} Dpto. de Arquitectura-InCo-FIng" Arquitectura de Computadoras – Interrupciones ".Url: https://www.fing.edu.uy/tecnoinf/mvd/cursos/arqcomp/material/teo/arq-teo08.pdf
+
+\bibitem{CANDELA} S.CANDELA "INTERRUPCIONES
+SOFTWARE y EXCEPCIONES" .Url: http://sopa.dis.ulpgc.es/ii-dso/leclinux/interrupciones/system_call/system_call.pdf
+
+\bibitem{int}" INTERRUPCIONES HARDWARE" .Url: http://sopa.dis.ulpgc.es/ii-dso/leclinux/interrupciones/int_hard/LEC3_INT_HARD.pdf
+
+\bibitem{inte}Facultad de infomatica UCM "Interrupciones".Url: http://www.fdi.ucm.es/profesor/jjruz/WEB2/Temas/Curso05_06/EC9.pdf
+
+\bibitem{arduino}"QUÉ SON Y CÓMO USAR INTERRUPCIONES EN ARDUINO". Url: https://www.luisllamas.es/que-son-y-como-usar-interrupciones-en-arduino/
+
+\end{thebibliography}
+\end{document}
